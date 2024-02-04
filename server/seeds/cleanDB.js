@@ -11,6 +11,7 @@ module.exports = async (modelName, collectionName) => {
       await db.dropCollection(collectionName);
     }
   } catch (err) {
+    console.log(err)
     throw err;
   }
 }
