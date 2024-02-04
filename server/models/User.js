@@ -1,6 +1,38 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt')
 
+const citySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  }, 
+  primary: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  alert: {
+    type: Boolean,
+    required: true,
+    default: false, 
+  },
+  longitude: {
+    type: String
+  },
+  latitude: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+  state: {
+    type: String
+  },
+  ZIP: {
+    type: String
+  }
+})
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -18,16 +50,8 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  },
-  primary_location: {
-    type: String
-  },
-  other_locations: [
-    {
-      type: String,
-      trim: true,
-    }
-  ]
+  },  
+  locations: [citySchema]
 });
 
 userSchema.pre('save', async function (next) {
