@@ -9,7 +9,7 @@ const cityData = require('./cityData.json');
 
 db.once('open', async () => {
   await cleanDB('User', 'users');
-  const cities = await City.insertMany(cityData)
+  const cities = await City.create(cityData)
 
   userData.forEach(user => {
     user.locations = []
@@ -20,7 +20,7 @@ db.once('open', async () => {
     }
   })
   
-  await User.insertMany(userData);
+  await User.create(userData);
 
   console.log('Users with city data seeded!');
   process.exit(0);
