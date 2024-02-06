@@ -1,26 +1,26 @@
 const db = require('../config/connection');
-const { User } = require('../models');
+const { User, City } = require('../models');
 const cleanDB = require('./cleanDB');
 
 const userData = require('./userData.json');
 const cityData = require('./cityData.json');
 
 
-userData.forEach(user => {
-  user.locations = []
-  const amount = Math.floor(Math.random() * cityData.length)
-  for (let i = 0; i < amount; i++) {
-    const random = Math.floor(Math.random() * cityData.length)
-    if (!user.locations.includes(cityData[random])){
-      user.locations.push(cityData[random])
-    }
-  }
-})
 
 db.once('open', async () => {
   await cleanDB('User', 'users');
+  const cities = await City.create(cityData)
 
-  await User.insertMany(userData);
+  userData.forEach(user => {
+    user.locations = []
+    for (city in cities) {
+      if (Math.random() > .4){
+        user.locations.push(city._id)
+      }
+    }
+  })
+  
+  await User.create(userData);
 
   console.log('Users with city data seeded!');
   process.exit(0);
