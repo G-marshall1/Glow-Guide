@@ -1,36 +1,21 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt')
 
-const citySchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  }, 
-  primary: {
-    type: Boolean,
-    required: true,
-    default: false,
+const preferencesSchema = new Schema({
+  email: {
+    type: Boolean
   },
-  alert: {
-    type: Boolean,
-    required: true,
-    default: false, 
+  text: {
+    type: Boolean
   },
-  longitude: {
-    type: String
+  phonecall: {
+    type: Boolean
   },
-  latitude: {
-    type: String
+  strengthMinimum: {
+    type: Number,
+    max_length: 9,
+    min_length: 1
   },
-  country: {
-    type: String
-  },
-  state: {
-    type: String
-  },
-  ZIP: {
-    type: String
-  }
 })
 
 const userSchema = new Schema({
@@ -50,15 +35,28 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  },  
-  locations: [citySchema]
+  },
+  
+  locations: [{ type: Schema.Types.ObjectId, ref: 'City'}],
+  alertPreferences: [preferencesSchema],  
 });
+
+userSchema.virtual('cityCount').get(function () {
+  return this.locations.length
+})
+
+userSchema.virtual('cityAlerts').get(function () {
+  cities = []
+  this.locations.forEach(city => cities.push(city.name))
+  return cities
+})
 
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10
     this.password = await bcrypt.hash(this.password, saltRounds)
   }
+  next()
 })
 
 userSchema.methods.checkPassword = async function (password) {

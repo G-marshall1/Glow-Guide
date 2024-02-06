@@ -1,25 +1,41 @@
 const typeDefs = `
-  type Tech {
-    _id: ID!
+  type City {
     name: String!
+    primary: Boolean
+    alert: Boolean
+    longitude: Float
+    latitude: Float
+    country: String
+    state: String
+    ZIP: String
   }
 
-  type Matchup {
+  type User {
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+    username: String!
+    email: String!
+    locations: [City]
+
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    users: [User]
+    user: User
+    city: City 
+    cities: [City]
   }
 
   type Mutation {
     createMatchup(tech1: String!, tech2: String!): Matchup
     createVote(_id: String!, techNum: Int!): Matchup
+
+    login():
+    createUser():
+    deleteUser():
+    addAlert():
+    removeAlert():
+    removeCity():
+    addCity():
   }
 `;
 
