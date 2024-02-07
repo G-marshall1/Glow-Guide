@@ -1,5 +1,6 @@
 const typeDefs = `
   type City {
+    _id: ID
     name: String!
     primary: Boolean
     alert: Boolean
@@ -15,28 +16,36 @@ const typeDefs = `
     username: String!
     email: String!
     locations: [City]
+  }
 
+  type Preferences {
+    email: Boolean
+    text: Boolean
+    phonecall: Boolean
+    strengthMinimum: Number
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
+    user(userId: ID!): User
     users: [User]
-    user: User
-    city: City 
+    city(cityId: ID!): City 
     cities: [City]
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-
-    login():
-    createUser():
-    deleteUser():
-    addAlert():
-    removeAlert():
-    removeCity():
-    addCity():
+    login(username: String, email: String, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    removeUser: User
+    addCity(city: City): User
+    removeCity(city: Ctiy): User
+    updatePreferences(preferences: Preferences): User
   }
+
 `;
 
 module.exports = typeDefs;

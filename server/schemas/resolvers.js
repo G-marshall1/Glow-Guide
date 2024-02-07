@@ -1,28 +1,82 @@
-const { Tech, Matchup } = require('../models');
+const { User, City } = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
+
 
 const resolvers = {
   Query: {
-    tech: async () => {
-      return Tech.find({});
+    user: async (parent, { userId } ) => {
+      return User.findOne({ _id: userId });
     },
-    matchups: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return Matchup.find(params);
+    users: async() => {
+      return User.find({})
     },
+    city: async (parent, { cityId } ) => {
+      return City.findOne({ _id: cityId })
+    },
+    cities: async() => {
+      return City.find({})
+    }
   },
   Mutation: {
-    createMatchup: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
+    login: async (parent, { username, email, password }) => {
+      data = username | email
+      const user = await User.findOne({ data });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+      return { token, user };
     },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
+    addUser: async(parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password })
+      const token = signToken(user)
+
+      return { token, user }
+    },
+    removeUser: async(parent, args, context) => {
+      if (!context.user) throw AuthenticationError
+      return User.findOneAndDelete({ _id: context.user._id })
+    },
+    addCity: async(parent, { city }, context) => {
+      if (!context.user) throw AuthenticationError
+
+      const checkCity = await City.findOne({ name: city.name }) 
+      if(!checkCity) var cityData = await City.create(city)
+      else var cityData = checkCity
+
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { locations: cityData._id.toString() }},
+        { new: true, runValidators: true }
+      )      
+    },
+    removeCity: async(parent, { city }, context) => {
+      if (!context.user) throw AuthenticationError
+
+      const cityData = await City.findOne({ name: city.name })
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { locations: cityData._id.toString() } },
         { new: true }
-      );
-      return vote;
+      )
     },
+    updatePreferences: async(parent, { preferences }, context) => {
+      if (!context.user) throw AuthenticationError
+
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $set: { preferences: preferences }},
+        { new: true, runValidators: true }
+      )
+    },    
   },
 };
 
