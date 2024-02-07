@@ -4,14 +4,15 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async (parent, { userId } ) => {
-      return User.findOne({ _id: userId });
+    user: async (parent, { username, email } ) => {
+      if (username) return User.findOne({ username: username });
+                    return User.findOne({ email: email})
     },
     users: async() => {
       return User.find({})
     },
-    city: async (parent, { cityId } ) => {
-      return City.findOne({ _id: cityId })
+    city: async (parent, { cityName } ) => {
+      return City.findOne({ name: cityName })
     },
     cities: async() => {
       return City.find({})
@@ -19,18 +20,14 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { username, email, password }) => {
-      data = username | email
-      const user = await User.findOne({ data });
+      if (username) var userData = await User.findOne({ username: username }).populate('City');
+      else          var userData = await User.findOne({ email: email}).populate('City')
+      const user = userData
 
-      if (!user) {
-        throw AuthenticationError;
-      }
+      if (!user) throw AuthenticationError
 
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
+      const correctPw = await user.isCorrectPassword(password)
+      if (!correctPw) throw AuthenticationError
 
       const token = signToken(user);
       return { token, user };
@@ -56,7 +53,7 @@ const resolvers = {
         { _id: context.user._id },
         { $addToSet: { locations: cityData._id.toString() }},
         { new: true, runValidators: true }
-      )      
+      ).populate('City')      
     },
     removeCity: async(parent, { city }, context) => {
       if (!context.user) throw AuthenticationError
@@ -66,7 +63,7 @@ const resolvers = {
         { _id: context.user._id },
         { $pull: { locations: cityData._id.toString() } },
         { new: true }
-      )
+      ).populate('City')
     },
     updatePreferences: async(parent, { preferences }, context) => {
       if (!context.user) throw AuthenticationError
@@ -75,7 +72,7 @@ const resolvers = {
         { _id: context.user._id },
         { $set: { preferences: preferences }},
         { new: true, runValidators: true }
-      )
+      ).populate('City')
     },    
   },
 };

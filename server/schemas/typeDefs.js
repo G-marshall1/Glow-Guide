@@ -2,13 +2,21 @@ const typeDefs = `
   type City {
     _id: ID
     name: String!
-    primary: Boolean
-    alert: Boolean
     longitude: Float
     latitude: Float
     country: String
     state: String
     ZIP: String
+  }
+
+  input city {
+    _id: ID
+    name: String!
+    longitude: Float
+    latitude: Float
+    country: String
+    state: String
+    ZIP: String  
   }
 
   type User {
@@ -18,11 +26,11 @@ const typeDefs = `
     locations: [City]
   }
 
-  type Preferences {
+  input Preferences {
     email: Boolean
     text: Boolean
     phonecall: Boolean
-    strengthMinimum: Number
+    strengthMinimum: Int
   }
 
   type Auth {
@@ -31,9 +39,9 @@ const typeDefs = `
   }
 
   type Query {
-    user(userId: ID!): User
+    user(username: String, email: String): User
     users: [User]
-    city(cityId: ID!): City 
+    city(cityName: String!): City 
     cities: [City]
   }
 
@@ -41,8 +49,8 @@ const typeDefs = `
     login(username: String, email: String, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser: User
-    addCity(city: City): User
-    removeCity(city: Ctiy): User
+    addCity(city: city): User
+    removeCity(city: city): User
     updatePreferences(preferences: Preferences): User
   }
 
