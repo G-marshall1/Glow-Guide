@@ -1,8 +1,7 @@
 const typeDefs = `
   type City {
+    _id: ID
     name: String!
-    primary: Boolean
-    alert: Boolean
     longitude: Float
     latitude: Float
     country: String
@@ -10,32 +9,50 @@ const typeDefs = `
     ZIP: String
   }
 
+  input city {
+    _id: ID
+    name: String!
+    longitude: Float
+    latitude: Float
+    country: String
+    state: String
+    ZIP: String  
+  }
+
   type User {
     _id: ID!
     username: String!
     email: String!
     locations: [City]
+  }
 
+  input Preferences {
+    email: Boolean
+    text: Boolean
+    phonecall: Boolean
+    strengthMinimum: Int
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
+    user(username: String, email: String): User
     users: [User]
-    user: User
-    city: City 
+    city(cityName: String!): City 
     cities: [City]
+    usersByCity(cityName: String!): [User]
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-
-    login():
-    createUser():
-    deleteUser():
-    addAlert():
-    removeAlert():
-    removeCity():
-    addCity():
+    login(username: String, email: String, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    removeUser: User
+    addCity(city: city): User
+    removeCity(city: city): User
+    updatePreferences(preferences: Preferences): User
   }
 `;
 
