@@ -1,9 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const CREATE_MATCHUP = gql`x`;
-
-export const CREATE_VOTE = gql`x`;
-
 export const LOGIN = gql`
   mutation login($username: String, $email: String, $password: String!) {
     login(username: $username, email: $email, password: $password) {
