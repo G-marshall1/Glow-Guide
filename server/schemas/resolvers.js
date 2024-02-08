@@ -70,9 +70,11 @@ const resolvers = {
       if (!context.user) throw AuthenticationError
 
       const cityData = await City.findOne({ name: city.name })
+      if(!cityData) return User.findOne({ _id: context.user._id })
+
       return User.findOneAndUpdate(
         { _id: context.user._id },
-        { $pull: { locations: cityData._id.toString() } },
+        { $pull: { locations: cityData._id.toString() }},
         { new: true }
       ).populate('locations')
     },

@@ -2,18 +2,17 @@ const typeDefs = `
   type City {
     _id: ID
     name: String!
-    longitude: Float
-    latitude: Float
+    longitude: String
+    latitude: String
     country: String
     state: String
     ZIP: String
   }
 
   input city {
-    _id: ID
     name: String!
-    longitude: Float
-    latitude: Float
+    longitude: String
+    latitude: String
     country: String
     state: String
     ZIP: String  
@@ -47,11 +46,11 @@ const typeDefs = `
   }
 
   type Mutation {
-    login(username: String, email: String, password: String!): Auth
+    login(username: String!, email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser: User
-    addCity(city: city): User
-    removeCity(city: city): User
+    addCity(city: city!): User
+    removeCity(city: city!): User
     updatePreferences(preferences: Preferences): User
   }
 `;
