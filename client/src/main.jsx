@@ -5,7 +5,6 @@ import App from './App.jsx';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
-import Navigation from './pages/Navigation.jsx';
 import FutureGlow from './pages/FutureGlow.jsx';
 import TodaysGlow from './pages/TodaysGlow.jsx';
 
