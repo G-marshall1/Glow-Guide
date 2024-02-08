@@ -44,9 +44,10 @@ const TodaysGlow = () => {
               <h3>{period.name}</h3>
               <p>Temperature: {period.temperature}°F</p>
               <p>Detailed Forecast: {period.detailedForecast}</p>
-              <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png" alt="Tonight's Static Viewline Forecast" title="Click to exit full screen"></img>
             </div>
           ))}
+          {/* Render the image only once outside the map function */}
+          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png" alt="Tonight's Static Viewline Forecast" title="Click to exit full screen" />
         </div>
       )}
     </div>
