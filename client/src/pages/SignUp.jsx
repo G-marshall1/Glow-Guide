@@ -35,9 +35,8 @@ const SignUp = () => {
     } catch (error) {
       console.error('Error during sign-up:', error);
     }
-  };
-  
-    console.log('Form submitted:', formData);
+
+    console.log('Form submitted:', formData); // Moved within handleSubmit function
   };
 
   return (
@@ -81,5 +80,7 @@ const SignUp = () => {
       </form>
     </div>
   );
+};
 
 export default SignUp;
+
