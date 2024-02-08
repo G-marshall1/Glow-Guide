@@ -5,23 +5,34 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     user: async (parent, { username, email } ) => {
-      if (username) return User.findOne({ username: username });
-                    return User.findOne({ email: email})
+      if (username) return await User.findOne({ username: username }).populate('locations')
+                    return await User.findOne({ email: email}).populate('locations')
     },
     users: async() => {
-      return User.find({})
+      return await User.find({}).populate('locations')
     },
     city: async (parent, { cityName } ) => {
-      return City.findOne({ name: cityName })
+      return await City.findOne({ name: cityName })
     },
     cities: async() => {
-      return City.find({})
+      return await City.find({})
+    },
+    usersByCity: async(parent, { cityName } ) => {
+      const users = await User.find({}).populate('locations')
+      const filteredUsers = users.filter((user) => {
+        check = false
+        user.locations.forEach((location => {
+          if (location.name == cityName) check = true
+        }))
+        return check
+      })
+      return filteredUsers
     }
   },
   Mutation: {
     login: async (parent, { username, email, password }) => {
-      if (username) var userData = await User.findOne({ username: username }).populate('City');
-      else          var userData = await User.findOne({ email: email}).populate('City')
+      if (username) var userData = await User.findOne({ username: username }).populate('locations')
+      else          var userData = await User.findOne({ email: email}).populate('locations')
       const user = userData
 
       if (!user) throw AuthenticationError
@@ -40,7 +51,7 @@ const resolvers = {
     },
     removeUser: async(parent, args, context) => {
       if (!context.user) throw AuthenticationError
-      return User.findOneAndDelete({ _id: context.user._id })
+      return await User.findOneAndDelete({ _id: context.user._id })
     },
     addCity: async(parent, { city }, context) => {
       if (!context.user) throw AuthenticationError
@@ -49,11 +60,11 @@ const resolvers = {
       if(!checkCity) var cityData = await City.create(city)
       else var cityData = checkCity
 
-      return User.findOneAndUpdate(
+      return await User.findOneAndUpdate(
         { _id: context.user._id },
         { $addToSet: { locations: cityData._id.toString() }},
         { new: true, runValidators: true }
-      ).populate('City')      
+      ).populate('locations')      
     },
     removeCity: async(parent, { city }, context) => {
       if (!context.user) throw AuthenticationError
@@ -63,16 +74,16 @@ const resolvers = {
         { _id: context.user._id },
         { $pull: { locations: cityData._id.toString() } },
         { new: true }
-      ).populate('City')
+      ).populate('locations')
     },
     updatePreferences: async(parent, { preferences }, context) => {
       if (!context.user) throw AuthenticationError
 
-      return User.findOneAndUpdate(
+      return await User.findOneAndUpdate(
         { _id: context.user._id },
         { $set: { preferences: preferences }},
         { new: true, runValidators: true }
-      ).populate('City')
+      ).populate('locations')
     },    
   },
 };

@@ -5,11 +5,6 @@ const citySchema = new Schema({
       type: String,
       required: true
     }, 
-    primary: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
     longitude: {
       type: String
     },

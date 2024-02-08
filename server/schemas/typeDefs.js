@@ -43,6 +43,7 @@ const typeDefs = `
     users: [User]
     city(cityName: String!): City 
     cities: [City]
+    usersByCity(cityName: String!): [User]
   }
 
   type Mutation {
@@ -53,7 +54,6 @@ const typeDefs = `
     removeCity(city: city): User
     updatePreferences(preferences: Preferences): User
   }
-
 `;
 
 module.exports = typeDefs;
