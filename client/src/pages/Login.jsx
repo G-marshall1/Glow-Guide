@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useMutation } from 'react';
+// import { LOGIN } from '../utils/mutations'
 
 const Login = () => {
   const [formData, setFormData] = useState({
     identifier: '', // This field can accept either username or email
     password: '',
   });
+  // const [loginUser] = useMutation(LOGIN)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,32 +16,16 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();    
         try {
-          const response = await fetch('', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          if (response.ok) {
-            // Successful login, you can redirect or perform any other actions
-            console.log('Login successful!');
-          } else {
-            // Handle login error (e.g., incorrect credentials)
-            console.error('Login failed:', await response.json());
-          }
+          const { data } = await loginUser({ ...formData })
+
         } catch (error) {
           // Handle network or other errors
           console.error('Error during login:', error);
         }
-      };
+      ;
     // Add your login logic here
     console.log('Form submitted:', formData);
   };

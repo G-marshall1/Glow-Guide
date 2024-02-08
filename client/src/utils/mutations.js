@@ -8,14 +8,6 @@ export const LOGIN = gql`
         _id
         username
         email
-        locations: [{
-          name
-          longitude
-          latitude
-          country
-          state
-          ZIP
-        }]
       }
     }
   }
