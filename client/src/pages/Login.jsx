@@ -1,34 +1,31 @@
-import { useState, useMutation } from 'react';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client'
 import { LOGIN_USER } from '../utils/mutations'
 
+import Auth from '../utils/auth.js';
+
 const Login = () => {
-  const [formData, setFormData] = useState({
-    identifier: '', // This field can accept either username or email
-    password: '',
-  });
+  const [userFormData, setUserFormData] = useState({ identifier: '',  password: '' });
   const [loginUser] = useMutation(LOGIN_USER)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setUserFormData({ ...userFormData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();    
+  const handleSubmit = async (event) => {
+    event.preventDefault();    
         try {
-          // const { data } = await loginUser({ ...formData })
-          // Auth.login(data.login.token)
+          const { data } = await loginUser({ ...userFormData })
+          Auth.login(data.login.token)
 
         } catch (error) {
           // Handle network or other errors
           console.error('Error during login:', error);
         }
-      ;
+      
     // Add your login logic here
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', userFormData);
   };
 
   return (
@@ -40,7 +37,7 @@ const Login = () => {
           <input
             type="text"
             name="identifier"
-            value={formData.identifier}
+            value={userFormData.identifier}
             onChange={handleChange}
             required
           />
@@ -51,7 +48,7 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            value={formData.password}
+            value={userFormData.password}
             onChange={handleChange}
             required
           />

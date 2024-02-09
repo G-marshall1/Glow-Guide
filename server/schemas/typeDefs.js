@@ -50,7 +50,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser: User
     addCity(data: addCityContent!): User
-    removeCity(city: city!): User
+    removeCity(city: String!): User
     updatePreferences(preferences: Preferences): User
   }
 `;

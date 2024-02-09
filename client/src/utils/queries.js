@@ -6,14 +6,14 @@ export const USER = gql`
       user {
         username
         email
-        locations: [city{
+        locations {
           name
           longitude
           latitude
           country
           state
           ZIP
-        }]
+        }
         preferences: {
           email
           text
@@ -26,22 +26,19 @@ export const USER = gql`
   
 export const USERS = gql`
   query users {
-    users {
-      [
+    users {      
         user {
           username
           email
-          locations: [
-            city{
-              name
-              longitude
-              latitude
-              country
-              state
-              ZIP
-            }
-          ]
-          preferences: {
+          locations {          
+            name
+            longitude
+            latitude
+            country
+            state
+            ZIP
+          }          
+          preferences {
             email
             text
             phonecall
@@ -69,7 +66,7 @@ export const CITY = gql`
 export const CITIES = gql`
   query cities {
     cities {
-      [
+      
         city{
           name
           longitude
@@ -78,7 +75,7 @@ export const CITIES = gql`
           state
           ZIP
         }
-      ]
+      
     }
   }`
 
