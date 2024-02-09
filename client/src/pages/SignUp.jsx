@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client'
+import { ADD_USER } from '../utils/mutations';
+import Auth from '..utils/auth'
+
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +11,7 @@ const SignUp = () => {
     email: '',
     password: '',
   });
+  const [addUser] = useMutation(ADD_USER)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,19 +25,11 @@ const SignUp = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.ok) {
-        console.log('User signed up successfully!');
-      } else {
-        console.error('Sign-up failed:', await response.json());
-      }
+      const { data } = await addUser({
+        variables: { ...formData}
+      })
+      Auth.login(data.addUser.token)
+
     } catch (error) {
       console.error('Error during sign-up:', error);
     }
