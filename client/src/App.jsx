@@ -8,6 +8,7 @@ import TodaysGlow from './pages/TodaysGlow';
 import FutureGlow from './pages/FutureGlow';
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+import Footer from './pages/Footer';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
@@ -45,6 +46,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>
+        <Footer />
       </div>
     </ApolloProvider>
   );
