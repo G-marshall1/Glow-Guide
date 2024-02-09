@@ -10,7 +10,7 @@ export const LOGIN_USER = gql`
         email
         locations {
           name
-          longtiude
+          longitude
           latitude
           country
           state

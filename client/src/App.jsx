@@ -1,5 +1,5 @@
 // import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import './App.css';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import Navigation from './pages/Navigation';
@@ -38,13 +38,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="flex-column justify-center align-center min-100-vh bg-primary">
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/todays-glow" element={<TodaysGlow />} />
-          <Route path="/future-glow" element={<FutureGlow />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-        </Routes>
+        <Outlet />
       </div>
     </ApolloProvider>
   );
