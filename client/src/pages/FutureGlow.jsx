@@ -20,17 +20,20 @@ const FutureGlow = () => {
     fetchData(); // Call the fetchData function
   }, [latitude, longitude]); // Add latitude and longitude to the dependency array
 
+  // Filter out periods representing nighttime
+  const nightPeriods = forecastData ? forecastData.periods.filter(period => period.isDaytime === false) : [];
+
   return (
     <div>
       <h2>Future Glow</h2>
       {forecastData ? (
         <div>
-          {forecastData.periods.map((period, index) => (
+          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tomorrow_nights_static_viewline_forecast.png" alt="Tomorrow Night's Static Viewline Forecast" title="Click to exit full screen" />
+          {nightPeriods.map((period, index) => (
             <div key={index}>
               <h3>{period.name}</h3>
               <p>Temperature: {period.temperature}°F</p>
               <p>Detailed Forecast: {period.detailedForecast}</p>
-              <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png" alt="Tonight's Static Viewline Forecast" title="Click to exit full screen"></img>
             </div>
           ))}
         </div>
@@ -42,6 +45,7 @@ const FutureGlow = () => {
 };
 
 export default FutureGlow;
+
 
 
 
