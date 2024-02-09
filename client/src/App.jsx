@@ -8,6 +8,7 @@ import TodaysGlow from './pages/TodaysGlow';
 import FutureGlow from './pages/FutureGlow';
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+import Footer from './pages/Footer';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
@@ -38,7 +39,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="flex-column justify-center align-center min-100-vh bg-primary">
         <Navigation />
-        <Outlet />
+        <Outlet /> 
       </div>
     </ApolloProvider>
   );
