@@ -30,9 +30,9 @@ const resolvers = {
     }
   },
   Mutation: {
-    login: async (parent, { username, email, password }) => {
-      if (username) var userData = await User.findOne({ username: username }).populate('locations')
-      else          var userData = await User.findOne({ email: email}).populate('locations')
+    login: async (parent, { identify, password }) => {
+      if (identify.includes('@')) var userData = await User.findOne({ username: identify }).populate('locations')
+      else          var userData = await User.findOne({ email: identify}).populate('locations')
       const user = userData
 
       if (!user) throw AuthenticationError
@@ -53,11 +53,11 @@ const resolvers = {
       if (!context.user) throw AuthenticationError
       return await User.findOneAndDelete({ _id: context.user._id })
     },
-    addCity: async(parent, { city }, context) => {
+    addCity: async(parent, { data }, context) => {
       if (!context.user) throw AuthenticationError
 
-      const checkCity = await City.findOne({ name: city.name }) 
-      if(!checkCity) var cityData = await City.create(city)
+      const checkCity = await City.findOne({ name: data.name }) 
+      if(!checkCity) var cityData = await City.create(data)
       else var cityData = checkCity
 
       return await User.findOneAndUpdate(

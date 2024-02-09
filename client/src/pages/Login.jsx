@@ -1,12 +1,12 @@
-import React, { useState, useMutation } from 'react';
-// import { LOGIN } from '../utils/mutations'
+import { useState, useMutation } from 'react';
+import { LOGIN_USER } from '../utils/mutations'
 
 const Login = () => {
   const [formData, setFormData] = useState({
     identifier: '', // This field can accept either username or email
     password: '',
   });
-  // const [loginUser] = useMutation(LOGIN)
+  const [loginUser] = useMutation(LOGIN_USER)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +19,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();    
         try {
-          const { data } = await loginUser({ ...formData })
+          // const { data } = await loginUser({ ...formData })
+          // Auth.login(data.login.token)
 
         } catch (error) {
           // Handle network or other errors

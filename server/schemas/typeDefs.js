@@ -9,7 +9,7 @@ const typeDefs = `
     ZIP: String
   }
 
-  input city {
+  input addCityContent {
     name: String!
     longitude: String
     latitude: String
@@ -46,10 +46,10 @@ const typeDefs = `
   }
 
   type Mutation {
-    login(username: String!, email: String!, password: String!): Auth
+    login(identify: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser: User
-    addCity(city: city!): User
+    addCity(data: addCityContent!): User
     removeCity(city: city!): User
     updatePreferences(preferences: Preferences): User
   }
