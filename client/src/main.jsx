@@ -7,6 +7,7 @@ import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import FutureGlow from './pages/FutureGlow.jsx';
 import TodaysGlow from './pages/TodaysGlow.jsx';
+import TestData from './pages/testData.jsx';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
       },{
         path: '/login',
         element: <Login />
+      },{
+        path: '/test',
+        element: <TestData />
       }
     ]
   }

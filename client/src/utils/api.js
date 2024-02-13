@@ -19,5 +19,21 @@ export const fetchForecastData = async (latitude, longitude) => {
     }
 };
 
-export default fetchForecastData; // Optionally export the function as default
+// const LIGHT_URL = 'https://services.swpc.noaa.gov/json/'
+
+// export const fetchLightsData = async (OPTION) => {
+//     try {
+//         const response = await fetch(`${LIGHT_URL}/${OPTION}`)
+//         if (!response.ok) {
+//             throw new Error('Failed to fetch light data')
+//         }
+//         const data = await response.json()
+//         return data
+//     } catch (error) {
+//         console.error('Error fetching light data', error)
+//         throw error
+//     }
+// }
+
+
 
