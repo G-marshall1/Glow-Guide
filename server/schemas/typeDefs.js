@@ -43,6 +43,7 @@ const typeDefs = `
     city(cityName: String!): City 
     cities: [City]
     usersByCity(cityName: String!): [User]
+    me: User
   }
 
   type Mutation {

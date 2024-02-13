@@ -19,5 +19,7 @@ export const fetchForecastData = async (latitude, longitude) => {
     }
 };
 
-export default fetchForecastData; // Optionally export the function as default
+export const get_chance = async (locationName) => {
+    return Math.floor(Math.random() * 100)
+}
 
