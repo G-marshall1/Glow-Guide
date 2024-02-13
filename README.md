@@ -2,20 +2,28 @@
 
 ## Description
 
-GlowGuide is your ultimate companion for tracking and forecasting the mesmerizing phenomenon of the northern lights, also known as the Aurora Borealis. With GlowGuide, you can stay informed about the best times and locations to witness this breathtaking natural spectacle. Discover the magic of the Northern Lights with Glow Guide. Plan your next aurora borealis adventure and explore the best viewing spots
-around the world.
+GlowGuide is your ultimate companion for tracking and forecasting the mesmerizing phenomenon of the northern lights, also known as the Aurora Borealis. With GlowGuide, you can stay informed about the best times and locations to witness this breathtaking natural spectacle. Discover the magic of the Northern Lights and plan your next aurora borealis adventure today! GlowGuide is a simple, easy to use full MERN stack application that uses a NOAA weather api to obtain Aurora Borealis data. Users are able to login and sign up to see the best places to view the northern lights around the world. Become a member of GlowGuide today! 
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+To install this application;
+
+1. Fork and clone the repository from the GitHub link provided.
+2. In your code editor open the root folder in the integrated terminal.
+3. Run the command `npm install` to install required dependencies.
+4. Then type `npm run build` to build the application.
+5. Next enter `npm run develop` to start the server.
+6. The server will be running on `localhost:3000`.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To use this application; 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+[Deployed Application Link](https://glow-guide.onrender.com)
 
-![alt text](assets/images/screenshot.png)
+[GitHub Repository](https://github.com/G-marshall1/Glow-Guide)
+
+![GlowGuide Screenshot](assets/images/screenshot.png)
 
 ## Credits
 
