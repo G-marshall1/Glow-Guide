@@ -4,6 +4,10 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    me: async (parent, { }, context) => {
+      const users = await User.find({})
+      return users [ Math.floor(Math.random() * users.length) ]
+    },
     user: async (parent, { username, email } ) => {
       if (username) return await User.findOne({ username: username }).populate('locations')
                     return await User.findOne({ email: email}).populate('locations')
@@ -45,6 +49,12 @@ const resolvers = {
     },
     addUser: async(parent, { username, email, password }) => {
       const user = await User.create({ username, email, password })
+      const cities = await City.find({})
+      cities.forEach((city) => {
+        user.locations.push( city._id.toString())
+      })
+      user.locations = cities
+
       const token = signToken(user)
 
       return { token, user }
