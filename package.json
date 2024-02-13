@@ -7,9 +7,9 @@
     "start": "node server/server.js --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i --production=false",
-    "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build", 
-    "render-build":"npm install && npm run build"
+    "seed": "node server/config/seed.js",
+    "build": "cd client && npm run build",
+    "render-build": "npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "concurrently": "^5.3.0"
   },
   "dependencies": {
+    "dotenv": "^16.4.1",
     "vite": "^5.1.0"
   }
 }
