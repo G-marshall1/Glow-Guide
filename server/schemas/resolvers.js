@@ -35,9 +35,8 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { identify, password }) => {
-      // if (identify.includes('@')) var userData = await User.findOne({ username: identify }).populate('locations')
-                var userData = await User.findOne({ username: identify}).populate('locations')
-      const user = userData
+      var user = await User.findOne({ username: identify }).populate('locations')
+      if(!user) user = await User.findOne({ email: identify }).populate('locations')
 
       if (!user) throw AuthenticationError
 

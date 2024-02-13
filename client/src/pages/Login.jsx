@@ -5,18 +5,18 @@ import { LOGIN_USER } from '../utils/mutations'
 import Auth from '../utils/auth.js';
 
 const Login = () => {
-  const [userFormData, setUserFormData] = useState({ identifier: '',  password: '' });
+  const [userData, setFormData] = useState({ identify: '',  password: '' });
   const [loginUser] = useMutation(LOGIN_USER)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserFormData({ ...userFormData, [name]: value });
+    setFormData({ ...userData, [name]: value });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();    
+  const handleSubmit = async (e) => {
+    e.preventDefault();    
         try {
-          const { data } = await loginUser({ ...userFormData })
+          const { data } = await loginUser({ variables: {...userData} })
           Auth.login(data.login.token)
 
         } catch (error) {
@@ -25,7 +25,7 @@ const Login = () => {
         }
       
     // Add your login logic here
-    console.log('Form submitted:', userFormData);
+    console.log('Form submitted:', userData);
   };
 
   return (
@@ -36,8 +36,8 @@ const Login = () => {
           Username or Email:
           <input
             type="text"
-            name="identifier"
-            value={userFormData.identifier}
+            name="identify"
+            value={userData.identify}
             onChange={handleChange}
             required
           />
@@ -48,7 +48,7 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            value={userFormData.password}
+            value={userData.password}
             onChange={handleChange}
             required
           />
