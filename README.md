@@ -2,9 +2,7 @@
 
 ## Description
 
-GlowGuide is your ultimate companion for tracking and forecasting the mesmerizing phenomenon of the northern lights, also known as the Aurora Borealis. With GlowGuide, you can stay informed about the best times and locations to witness this breathtaking natural spectacle.
-Discover the magic of the Northern Lights with Glow Guide. Plan your
-next aurora borealis adventure and explore the best viewing spots
+GlowGuide is your ultimate companion for tracking and forecasting the mesmerizing phenomenon of the northern lights, also known as the Aurora Borealis. With GlowGuide, you can stay informed about the best times and locations to witness this breathtaking natural spectacle. Discover the magic of the Northern Lights with Glow Guide. Plan your next aurora borealis adventure and explore the best viewing spots
 around the world.
 
 ## Installation
