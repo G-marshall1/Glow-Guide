@@ -57,9 +57,6 @@ const Home = () => {
                     )
                   })
                 } */}
-                <li>{}</li>
-                <li>{}</li>
-                <li>{}</li>
               </ol>
             </section>     
             <section>

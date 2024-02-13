@@ -15,6 +15,11 @@ const Navigation = () => {
                 <li>
                     <Link to="/future-glow">Future Glow</Link>
                 </li>
+                {Auth.loggedIn() && (
+                    <li>
+                        <a onClick={Auth.logout}>Logout</a>
+                    </li>
+                )}
                 {!Auth.loggedIn() && (<>
                 <li>
                     <Link to="/login">Login</Link>

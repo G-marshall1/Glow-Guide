@@ -49,6 +49,12 @@ const resolvers = {
     },
     addUser: async(parent, { username, email, password }) => {
       const user = await User.create({ username, email, password })
+      const cities = await City.find({})
+      cities.forEach((city) => {
+        user.locations.push( city._id.toString())
+      })
+      user.locations = cities
+
       const token = signToken(user)
 
       return { token, user }
