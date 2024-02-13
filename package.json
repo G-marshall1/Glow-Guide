@@ -7,7 +7,8 @@
     "start": "node server/server.js --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i --production=false",
-    "seed": "cd server && npm run seed",
+    "seed":  "node server/config/seed.js",
+    "seed-dev":  "cd server && npm run seed",
     "build": "cd client && npm run build", 
     "render-build":"npm install && npm run build"
   },
@@ -18,5 +19,9 @@
   },
   "dependencies": {
     "vite": "^5.1.0"
+  },
+  "comments": {
+    "seed_renderSeed": "\"\"seed\": \"node server/config/seeds.js\"",
+    "seed_localSeed": "\"cd server && npm run seed\""
   }
 }

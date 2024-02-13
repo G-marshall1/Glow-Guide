@@ -1,0 +1,47 @@
+[
+    {
+        "name":"Reykjavik",
+        "longitude":"64.14694",
+        "latitude":"-21.94102",
+        "country":"Iceland"    
+    },
+    {
+        "name":"Fairbanks",
+        "longitude":"64.83988",
+        "latitude":"-147.71398",
+        "country":"United States",
+        "state":"AK",
+        "ZIP":"99703"
+    },
+    {
+        "name":"Yellowknife",
+        "longitude":"62.45405",
+        "latitude":"-114.37569",
+        "country":"Canada"
+    },
+    {
+        "name":"Tromosø",
+        "longitude":"69.66905",
+        "latitude":"18.92969",
+        "country":"Norway"
+    },
+    {
+        "name":"Hobart",
+        "longitude":"-42.77664",
+        "latitude":"147.19765",
+        "country":"Australia"
+    },
+    {
+        "name":"Stornoway",
+        "longitude":"58.21532",
+        "latitude":"-6.36519",
+        "country":"United Kingdom"
+    },
+    {
+        "name":"Voyageurs NP",
+        "longitude":"48.47594",
+        "latitude":"-92.84631",
+        "country":""
+    }
+]
+   
