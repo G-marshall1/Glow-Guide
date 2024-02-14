@@ -27,12 +27,12 @@ const FutureGlow = () => {
     <div>
       <h2>Future Glow</h2>
       {forecastData ? (
-        <div>
-          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tomorrow_nights_static_viewline_forecast.png" alt="Tomorrow Night's Static Viewline Forecast" title="Click to exit full screen" />
+        <div id="futureMaster">
+          <img id="futureImage" src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tomorrow_nights_static_viewline_forecast.png" alt="Tomorrow Night's Static Viewline Forecast" title="Click to exit full screen" />
           {nightPeriods.map((period, index) => (
-            <div key={index}>
+            <div class="futureForcast weather-card" key={index}>
               <h3>{period.name}</h3>
-              <p>Temperature: {period.temperature}°F</p>
+              <p >Temperature: {period.temperature}°F</p>
               <p>Detailed Forecast: {period.detailedForecast}</p>
             </div>
           ))}
