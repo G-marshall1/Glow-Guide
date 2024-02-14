@@ -1,17 +1,21 @@
 import Auth from '../utils/auth'
-import { get_chance } from '../utils/api'
+import { useEffect, useState } from 'react';
+
+// import { get_chance } from '../utils/api'
 import { GET_ME } from '../utils/queries'
 import { useQuery } from '@apollo/client'
 
-const Home = () => { 
-
-  
+const Home = () => {  
   const { loading, data } = useQuery(GET_ME)
+  const [userData, setUser] = useState(null)
 
-  console.log(data)
-
-  const userData = data?.me || {}
-  console.log(userData)
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await data?.me || {}
+      setUser(user)
+    }
+    fetchUser()
+  }, [])
 
   if (loading) {
     return <h2>LOADING...</h2>; 
@@ -45,11 +49,7 @@ const Home = () => {
               </div>
               <div>
                 <h2>Top Locations</h2>
-              </div>
-            </section>
-            <section>
-              <h2>Tonights Chance</h2>
-              <ol>
+                <h3>{userData.username}</h3>
                 {/* {
                   userData.location.map((location) => {
                     return (
@@ -57,6 +57,12 @@ const Home = () => {
                     )
                   })
                 } */}
+
+              </div>
+            </section>
+            <section>
+              <h2>Tonights Chance</h2>
+              <ol>
               </ol>
             </section>     
             <section>

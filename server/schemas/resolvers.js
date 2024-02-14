@@ -5,12 +5,13 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     me: async (parent, { }, context) => {
-      const users = await User.find({})
-      return users [ Math.floor(Math.random() * users.length) ]
+      const user = await User.find({ _id: context.user._id })
+      return user
     },
-    user: async (parent, { username, email } ) => {
-      if (username) return await User.findOne({ username: username }).populate('locations')
-                    return await User.findOne({ email: email}).populate('locations')
+    user: async (parent, { identify } ) => {
+      var user = await User.findOne({ username: identify }).populate('locations')
+      if(!user) user = await User.findOne({ email: identify }).populate('locations')
+      return user
     },
     users: async() => {
       return await User.find({}).populate('locations')
@@ -96,7 +97,43 @@ const resolvers = {
         { new: true, runValidators: true }
       ).populate('locations')
     },    
+    
+    // Graph Ql Mutations
+    QLremoveUser: async(parent, { username }, context) => {
+      return await User.findOneAndDelete({ username: username })
+    },
+    QLaddCity: async(parent, { username, data }, context) => {
+
+      const checkCity = await City.findOne({ name: data.name }) 
+      if(!checkCity) var cityData = await City.create(data)
+      else var cityData = checkCity
+
+      return await User.findOneAndUpdate(
+        { username: username },
+        { $addToSet: { locations: cityData._id.toString() }},
+        { new: true, runValidators: true }
+      ).populate('locations')      
+    },
+    QLremoveCity: async(parent, { username, city }, context) => {
+
+      const cityData = await City.findOne({ name: city })
+      if(!cityData) return User.findOne({ username: username })
+
+      return User.findOneAndUpdate(
+        { username: username },
+        { $pull: { locations: cityData._id.toString() }},
+        { new: true }
+      ).populate('locations')
+    },
+    QLupdatePreferences: async(parent, { preferences }, context) => {
+
+      return await User.findOneAndUpdate(
+        { username: username },
+        { $set: { preferences: preferences }},
+        { new: true, runValidators: true }
+      ).populate('locations')
+      }
   },
-};
+}
 
 module.exports = resolvers;

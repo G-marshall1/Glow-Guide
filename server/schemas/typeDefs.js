@@ -53,6 +53,11 @@ const typeDefs = `
     addCity(data: addCityContent!): User
     removeCity(city: String!): User
     updatePreferences(preferences: Preferences): User
+
+    QLremoveUser(username: String!): User
+    QLaddCity(username: String! data: addCityContent!): User
+    QLremoveCity(username: String!, city: String!): User
+    QLupdatePreferences(username: String! preferences: Preferences): User
   }
 `;
 
