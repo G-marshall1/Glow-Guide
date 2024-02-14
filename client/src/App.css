@@ -102,10 +102,86 @@ footer, p {
 
 .todayBody {
   display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;;
     flex-wrap: nowrap;
     align-items: flex-start;
 }
+
+#futureMaster {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.futureForcast {
+  order: 1;
+  flex: 0 0 calc(50% - 10px);
+  margin-right: 20px; /* Optional: Add margin between the weather cards */
+  margin-bottom: 20px; /* Optional: Add margin between the weather cards and the image */
+}
+
+/* .futureForcast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 2rem;
+  flex: 1;
+  order: 1; /* Place the weather cards on the left */
+  /* margin-right: 20px;
+  width: calc(50% - 10px); /* Ensure each weather card takes up 50% of the container width */
+  /* margin-bottom: 20px;
+} */ 
+
+.futureForcast::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+#futureImage {
+  float: right;
+  margin-left: 10px;
+  height: 500px;
+  /* flex: 0 0 50%; Ensure the image takes up 50% of the container width */
+}
+
+/* #futureImage {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 0.3rem;
+margin-top: 50px;
+flex: 1;
+order: 2;
+width: 50%
+} */
+
+.weather-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.weather-card h3 {
+  margin-top: 0;
+}
+
+.weather-card p {
+  margin: 8px 0;
+}
+
+
+
+footer {
+  flex-shrink: 0; /* Prevent the footer from shrinking */
+  width: -webkit-fill-available;
+}
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.

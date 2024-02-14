@@ -40,7 +40,7 @@ const TodaysGlow = () => {
       {forecast && (
         <div class="todayBody">
           {getTodaysPeriods().map((period, index) => (
-            <div key={index}>
+            <div class="weather-card" key={index}>
               <h3>{period.name}</h3>
               <p>Temperature: {period.temperature}°F</p>
               <p>Detailed Forecast: {period.detailedForecast}</p>
