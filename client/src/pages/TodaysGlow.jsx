@@ -33,12 +33,12 @@ const TodaysGlow = () => {
   };
 
   return (
-    <div>
+    <div class="todayMain">
       <h2>Todays Glow Forecast</h2>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {forecast && (
-        <div>
+        <div class="todayBody">
           {getTodaysPeriods().map((period, index) => (
             <div key={index}>
               <h3>{period.name}</h3>
@@ -47,7 +47,7 @@ const TodaysGlow = () => {
             </div>
           ))}
           {/* Render the image only once outside the map function */}
-          <img src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png" alt="Tonight's Static Viewline Forecast" title="Click to exit full screen" />
+          <img id="todayAurora" src="https://services.swpc.noaa.gov/experimental/images/aurora_dashboard/tonights_static_viewline_forecast.png" alt="Tonight's Static Viewline Forecast" title="Click to exit full screen" />
         </div>
       )}
     </div>

@@ -28,6 +28,84 @@ main {
   display: block;
 }
 
+/* nav settings */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: #2d3e50;
+  color: #d9e9e8;
+  /* move nav to the dop of the page */
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+}
+
+nav a {
+  color: #d9e9e8;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  /* line them up in a row */
+  display: inline-block;
+  margin: 0 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  /* add a little space between them */
+  border: 1px solid transparent;
+  margin: 0 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+display: inline-flex;
+flex-direction: row;
+}
+
+nav a:hover {
+  background-color: #1a1a1a;
+  color: #d9e9e8;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+} 
+
+/* move .homeHeader under the nav */
+.homeHeader {
+  margin-top: 0rem;
+  top: 0%;
+}
+
+.homeSky {
+  text-align: center;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+footer, p {
+  text-align: center;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+#todayAurora {
+  height: 500px;
+}
+
+.todayBody {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -1200,7 +1278,7 @@ label form [type='radio'] {
 
 .flex-column {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
