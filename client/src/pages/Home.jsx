@@ -18,10 +18,10 @@ const Home = () => {
   }
   return (
     <div>
-      <header>
+      <header class="homeHeader">
         <h1>Welcome to Glow Guide</h1>
       </header>
-      <section>
+      <section id="homeSection">
         <p>
           Discover the magic of the Northern Lights with Glow Guide. Plan your
           next aurora borealis adventure and explore the best viewing spots
@@ -36,6 +36,7 @@ const Home = () => {
           <a href="/sign-up">Not a member? Sign Up Here!</a>
         )}
       </section>
+      <div class="homeSky"><iframe src="https://allsky.gi.alaska.edu/" align="middle" width="500" height="500" frameborder="0"></iframe></div>
       <section>
         {Auth.loggedIn() && (
           <div>
