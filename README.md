@@ -17,13 +17,13 @@ To install this application;
 
 ## Usage
 
-To use this application; 
+To use this application; c
 
 [Deployed Application Link](https://glow-guide.onrender.com)
 
 [GitHub Repository](https://github.com/G-marshall1/Glow-Guide)
 
-![GlowGuide Screenshot](assets/images/screenshot.png)
+![GlowGuide Screenshot](/client/src/assets/images/GlowGuideScreenshot%20.png) 
 
 ## Credits
 
