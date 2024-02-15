@@ -17,8 +17,8 @@ const Home = () => {
     return <h2>LOADING...</h2>; 
   }
   return (
-    <div class="homeColors">
-      <header class="homeHeader">
+    <div className="homeColors">
+      <header className="homeHeader">
         <h1>Welcome to Glow Guide</h1>
       </header>
       <section id="homeSection">
@@ -36,7 +36,7 @@ const Home = () => {
           <a href="/sign-up">Not a member? Sign Up Here!</a>
         )}
       </section>
-      <div class="homeSky"><iframe src="https://allsky.gi.alaska.edu/" align="middle" width="500" height="500" frameborder="0"></iframe></div>
+      <div className="homeSky"><iframe src="https://allsky.gi.alaska.edu/" align="middle" width="500" height="500"></iframe></div>
       <section>
         {Auth.loggedIn() && (
           <div>
