@@ -1188,8 +1188,9 @@ a:hover {
 /* BACKGROUND UTILS */
 
 .bg-primary {
-  background-image: url('./src/assets/images/light.jpeg');
+  /* background-image: url('./src/assets/images/light.jpeg'); */
   background-size: cover;
+  background-color: #2D3E50 !important;
 }
 
 .bg-info {
