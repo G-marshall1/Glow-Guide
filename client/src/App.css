@@ -75,6 +75,10 @@ nav a:hover {
   color: #d9e9e8;
 }
 
+nav li a {
+  cursor: pointer;
+}
+
 nav, h1 {
   padding-left: 1%;
 }
@@ -604,7 +608,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
-  color: #1a1a1a;
+  color: white;
 }
 
 h1,
@@ -1167,9 +1171,6 @@ a:hover {
 }
 
 /* BACKGROUND UTILS */
-.bg-primary {
-  background-color: #2d3e50 !important;
-}
 
 .bg-info {
   background-color: #1bbc9b !important;
