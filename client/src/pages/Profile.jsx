@@ -6,19 +6,23 @@ const Profile = () => {
     const user = Auth.getProfile();
 
     if (!Auth.loggedIn()) {
-        // Redirect if user is not logged in
-        // You may want to handle this differently based on your application flow
+        // Redirect if the user is not logged in
         window.location.assign('/login');
-        return null; // Optional: You can also render a message or component here
+        return null; 
     }
+
+    const username = user.data.email; // Access the username property
 
     return (
         <div>
             <h2>Your Profile</h2>
-            <p>Welcome, {user.username}!</p>
-            {/* Add more information based on your user data */}
+            <p>Welcome, {username}!</p>
         </div>
     );
 };
 
 export default Profile;
+
+
+
+
