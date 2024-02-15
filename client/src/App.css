@@ -19,6 +19,9 @@
  */
 body {
   margin: 0;
+  background-image: url('./assets/images/northern-lights.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /**
@@ -36,10 +39,6 @@ nav {
   align-items: center;
   padding: 1rem 0;
   /* background-color: #2d3e50; */
-  background-image:url(/client/src/assets/images/northern-lights.jpeg);
-    /* Optionally, you can set background properties like repeat, position, etc. */
-    background-repeat: no-repeat;
-    background-size: cover; /* Adjust as needed */
   color: #d9e9e8;
   /* move nav to the dop of the page */
   /* position: fixed; */
