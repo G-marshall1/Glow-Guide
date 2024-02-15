@@ -5,6 +5,7 @@ import App from './App.jsx';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
+import Profile from './pages/Profile.jsx';
 import FutureGlow from './pages/FutureGlow.jsx';
 import TodaysGlow from './pages/TodaysGlow.jsx';
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       },{
         path: '/login',
         element: <Login />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
       }
     ]
   }
