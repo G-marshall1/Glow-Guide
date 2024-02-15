@@ -19,7 +19,7 @@
  */
 body {
   margin: 0;
-  background-image: url('./light.jpeg');
+  background-image: url('light.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   /* background-color: #1b89bc; */
