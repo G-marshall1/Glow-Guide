@@ -22,7 +22,6 @@ body {
   background-image: url('light.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: #1b89bc; */
 }
 
 /**
@@ -1193,8 +1192,11 @@ a:hover {
 /* BACKGROUND UTILS */
 
 .bg-primary {
+
   background-image: url('/client/public/GlowGuideScreenshot\ .png');
+
   background-size: cover;
+  background-color: #2D3E50 !important;
 }
 
 .bg-info {
