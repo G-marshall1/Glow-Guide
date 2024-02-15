@@ -1188,7 +1188,7 @@ a:hover {
 /* BACKGROUND UTILS */
 
 .bg-primary {
-  background-image: url('./assets/images/northern-lights.jpeg');
+  background-image: url('./src/assets/images/light.jpeg');
   background-size: cover;
 }
 
