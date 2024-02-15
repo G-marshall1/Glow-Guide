@@ -4,6 +4,7 @@ import './App.css';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import Navigation from './pages/Navigation';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 import TodaysGlow from './pages/TodaysGlow';
 import FutureGlow from './pages/FutureGlow';
 import Login from './pages/Login'
