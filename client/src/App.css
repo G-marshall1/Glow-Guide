@@ -19,7 +19,7 @@
  */
 body {
   margin: 0;
-  background-image: url('./assets/images/northern-lights.jpeg');
+  /* background-image: url('./assets/images/northern-lights.jpeg'); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1186,6 +1186,11 @@ a:hover {
 }
 
 /* BACKGROUND UTILS */
+
+.bg-primary {
+  background-image: url('./assets/images/northern-lights.jpeg');
+  background-size: cover;
+}
 
 .bg-info {
   background-color: #1bbc9b !important;
