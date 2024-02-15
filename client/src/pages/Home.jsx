@@ -17,7 +17,7 @@ const Home = () => {
     return <h2>LOADING...</h2>; 
   }
   return (
-    <div>
+    <div class="homeColors">
       <header class="homeHeader">
         <h1>Welcome to Glow Guide</h1>
       </header>
