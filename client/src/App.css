@@ -210,6 +210,7 @@ width: 50%
   flex-wrap: wrap;
   align-content: center;
   margin-top: 10%;
+  color: black; 
 }
 /* Input fields */
 .login-container label {
@@ -252,7 +253,7 @@ width: 50%
   flex-direction: column;
   justify-content: center;
   align-items: center;
- height: 50vh;
+  height: 50vh;
 } 
 .signup-form {
   width: 300px; /* Adjust as needed */
@@ -260,7 +261,9 @@ width: 50%
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #F9F9F9;
+  color: black; 
 }
+
 .signup-form label {
   margin-bottom: 10px;
 }
