@@ -185,6 +185,7 @@ width: 50%
   margin-bottom: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  color: black;
 }
 
 .weather-card h3 {
@@ -1192,7 +1193,7 @@ a:hover {
 /* BACKGROUND UTILS */
 
 .bg-primary {
-  background-image: url('./assets/images/northern-lights.jpeg');
+  background-image: url('/client/public/GlowGuideScreenshot\ .png');
   background-size: cover;
 }
 
