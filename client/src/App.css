@@ -22,7 +22,6 @@ body {
   background-image: url('light.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: #1b89bc; */
 }
 
 /**
@@ -1189,7 +1188,7 @@ a:hover {
 /* BACKGROUND UTILS */
 
 .bg-primary {
-  background-image: url('./assets/images/northern-lights.jpeg');
+  background-image: url('./src/assets/images/light.jpeg');
   background-size: cover;
 }
 
